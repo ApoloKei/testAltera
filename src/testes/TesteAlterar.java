@@ -16,17 +16,23 @@ for (int i = 0; i <= 1;i++) {
 
     pessoa.add(new Pessoa(nome, idade));
 }
+
+        //ESSA PARTE É APENAS PRA VER O INDICE DO OBJETO SALVO
         String nomePesquisado = JOptionPane.showInputDialog("Entre com o nome o qual quer saber o indice");
 
         IntStream res = IntStream.range(0,pessoa.size()).filter(i -> pessoa.get(i).getNome().equals(nomePesquisado));
-        System.out.println("Posição:  " + res.max().getAsInt());
+        System.out.println("Posição:  " + res.max().getAsInt()); // <-- ESSA LINHA MOSTRA O INDICE
 
-        int n = JOptionPane.showConfirmDialog(null, "Voce gostaria de deletar mesmo?", "An Inane Question", JOptionPane.YES_NO_OPTION);
-        if (objetoDeletado == pessoa){
-            pessoa.remove(objetoDeletado);
-        }else {
-            System.out.println("Nao existe esse valor");
-        }
+        //ESSA PARTE É PRA DELETAR O OBJETO BASEADO NO INDICE
+        int numero = Integer.parseInt(JOptionPane.showInputDialog("entre com o valor a ser deletado"));
+        pessoa.remove(numero);
+
+        String nome = JOptionPane.showInputDialog("Entre com o nome");
+        String idade = JOptionPane.showInputDialog("Entre com a idade");
+
+        //ESSE CODIGO ABAIXO ADD NA MATRIZ E NO MESMO INDICE QUE O OBJETO DELETADO ANTERIORMENTE
+        pessoa.add(numero,new Pessoa(nome,idade));
+
 
     }
 }
